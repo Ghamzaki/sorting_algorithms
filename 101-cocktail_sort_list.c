@@ -46,13 +46,18 @@ void reverse_swap(listint_t **list, listint_t *current, int *swapped)
 		{
 			temp = current->prev;
 			swap_nodes(list, current, temp);
-			swapped = 1;
+			*swapped = 1;
 			print_list(*list);
 		}
 		else
 		{
 			current = current->prev;
 		}
+	}
+
+	if (current->prev == NULL)
+	{
+		current = current->next;
 	}
 }
 
@@ -86,25 +91,6 @@ void cocktail_sort_list(listint_t **list)
 			else
 			{
 				current = current->next;
-			}
-		}
-
-		if (!swapped)
-			break;
-
-		swapped = 0;
-		while (current->prev != NULL)
-		{
-			if (current->n < current->prev->n)
-			{
-				temp = current->prev;
-				swap_nodes(list, current, temp);
-				swapped = 1;
-				print_list(*list);
-			}
-			else
-			{
-				current = current->prev;
 			}
 		}
 
